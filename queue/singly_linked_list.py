@@ -7,7 +7,16 @@ class Node:
 class LinkedList:
   def __init__(self):
     self.head = None
-    self.head = None
+    self.tail = None
+
+  def __str__(self):
+      string = '('
+      nodeval = self.head
+      while nodeval:
+          string += f'{nodeval.value}, '
+          nodeval = nodeval.next
+      string += ')'
+      return string
 
   def add_to_tail(self, value):
     if self.head:
@@ -44,7 +53,8 @@ class LinkedList:
       nexttolastval = self.head
       while nexttolastval.next.next:
         nexttolastval = nexttolastval.next
-      self.last = nexttolastval
+      self.tail = nexttolastval
+      self.tail.next = None
     return tailval
 
   def get_max(self):
